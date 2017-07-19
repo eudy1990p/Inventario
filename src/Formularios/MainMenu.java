@@ -24,9 +24,13 @@ public class MainMenu extends javax.swing.JFrame {
     private String usuarioTipo = "admin";
     private MySql conector = null;
     private int[] combinar = {0,0,0,0};
-  
+    private String msjNoConectado =  "Usted no tiene permiso para entrar a esta zona";
     
     private boolean administrador = false,supervisor = false, cajero = false;
+    
+    public void msj(){
+        JOptionPane.showMessageDialog(null,this.msjNoConectado,"Solo personal autorizado",JOptionPane.WARNING_MESSAGE);
+    }
     
     public void validarTipoUsuario(){
         administrador = false; 
@@ -88,6 +92,8 @@ public class MainMenu extends javax.swing.JFrame {
                     ,this.usuarioID,this.usuarioNombre);
             proveedor.setYo(proveedor);
             proveedor.setVisible(true);
+        }else{
+            this.msj();
         }
     }
     
@@ -96,6 +102,8 @@ public class MainMenu extends javax.swing.JFrame {
             ProductoAdministrar producto = new ProductoAdministrar(this.conector,
                     this.usuarioID,this.usuarioNombre);
             producto.setVisible(true);
+        }else{
+            this.msj();
         }
     }
     
@@ -105,6 +113,8 @@ public class MainMenu extends javax.swing.JFrame {
                     this.usuarioID,this.usuarioNombre);
             compra.setYo(compra);
             compra.setVisible(true);
+        }else{
+            this.msj();
         }
     }
     
@@ -114,12 +124,16 @@ public class MainMenu extends javax.swing.JFrame {
             UsuariosAdministrar usuario = new UsuariosAdministrar(this.conector,
                     this.usuarioID,this.usuarioNombre);
             usuario.setVisible(true);
+        }else{
+            this.msj();
         }
     }
     public void acercade(){
         if(this.administrador || this.cajero || this.supervisor){
             AcercaDe acercaDe = new AcercaDe();
             acercaDe.setVisible(true);
+        }else{
+            this.msj();
         }
     }
     public void TipoTelefono(){
@@ -128,6 +142,8 @@ public class MainMenu extends javax.swing.JFrame {
             TipoTelefonoAdministrar tipoTelefono = new TipoTelefonoAdministrar(this.conector,
                     this.usuarioID,this.usuarioNombre);
             tipoTelefono.setVisible(true);
+        }else{
+            this.msj();
         }
     }
 
