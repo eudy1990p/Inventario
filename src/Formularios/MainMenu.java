@@ -83,6 +83,8 @@ public class MainMenu extends javax.swing.JFrame {
                     ,this.usuarioID,this.usuarioNombre);
             cliente.setYo(cliente);
             cliente.setVisible(true);
+        }else{
+            this.msj();
         }
     }
     
